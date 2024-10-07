@@ -1,0 +1,5 @@
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+  <label for="title">Title</label>
+  <input formControlName="title" id="title" aria-label="title" />
+  <button type="submit"></button>
+</form>

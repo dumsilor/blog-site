@@ -3,7 +3,7 @@ import { CardComponent } from '../../partials/card/card.component';
 import { blogPost } from '../../../shared/models/blog-post.model';
 import { CommonModule } from '@angular/common';
 import { DefaultButtonComponent } from '../../partials/default-button/default-button.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { LandingPageService } from '../../../services/landing-page.service';
 
 @Component({
@@ -15,12 +15,15 @@ import { LandingPageService } from '../../../services/landing-page.service';
 })
 export class LandingPageComponent implements OnInit {
   blogPosts!: blogPost[];
-  constructor(private landingPageService: LandingPageService) {}
+  constructor(
+    private landingPageService: LandingPageService,
+    private roueter: Router
+  ) {}
   ngOnInit(): void {
     this.blogPosts = this.landingPageService.getAllBlogPosts();
   }
 
   buttonClicked() {
-    console.log('Button Clicked');
+    this.roueter.navigateByUrl('/add');
   }
 }
