@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        margin: 3rem;
+    }
+
+    article {
+        white-space: pre-wrap;
+        margin: 1rem 3rem;
+    }
+}

@@ -1,4 +1,6 @@
 <app-default-button button_title="Add New Content" (onClick)="buttonClicked()"></app-default-button>
 <div class="container">
-    <app-card *ngFor="let post of blogPosts" [title]="post.title" [article]="post.article"></app-card>
+  <a *ngFor="let post of blogPosts" routerLink="/article/{{post.id}}">
+    <app-card [title]="post.title" [article]="post.article"></app-card>
+  </a>
 </div>
