@@ -7,11 +7,17 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { DefaultButtonComponent } from '../../partials/default-button/default-button.component';
 
 @Component({
   selector: 'app-add-article',
   standalone: true,
-  imports: [TextInputComponent, CommonModule, ReactiveFormsModule],
+  imports: [
+    TextInputComponent,
+    CommonModule,
+    ReactiveFormsModule,
+    DefaultButtonComponent,
+  ],
   templateUrl: './add-article.component.html',
   styleUrl: './add-article.component.scss',
 })
@@ -23,9 +29,12 @@ export class AddArticleComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.articleForm.controls['title']);
+  }
 
   onSubmit() {
     console.log(this.articleForm.value);
   }
+
 }

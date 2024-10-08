@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { blogPost } from '../../../shared/models/blog-post.model';
 import { ArticleService } from '../../../services/article.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-article',
@@ -10,9 +11,10 @@ import { ArticleService } from '../../../services/article.service';
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent implements OnInit, OnDestroy {
   id!: string;
   articlePost!: blogPost;
+  articlePostSubscription!: Subscription;
 
   constructor(
     private avtivatedRoute: ActivatedRoute,
@@ -26,7 +28,15 @@ export class ArticleComponent implements OnInit {
       console.log('No Article found with id: ' + this.id);
       return;
     } else {
-      this.articlePost = this.articleService.getArticleById(this.id)!;
+      this.articlePostSubscription = this.articleService
+        .getArticleById(this.id)
+        .subscribe((post) => {
+          this.articlePost = post;
+        });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.articlePostSubscription.unsubscribe();
   }
 }

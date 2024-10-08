@@ -1,5 +1,9 @@
 <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
-  <label for="title">Title</label>
-  <input formControlName="title" id="title" aria-label="title" />
-  <button type="submit"></button>
+  <!-- <label for="title">Title</label> -->
+  <text-input label="Title" placeholder="title" [control]="this.articleForm.controls['title']" />
+  <div class="article-container">
+    <label for="article">Article</label>
+    <textarea name="article" id="article" formControlName="article" cols="30" rows="10" placeholder="Enter Article"></textarea>
+  </div>
+  <app-default-button button_title="submit"></app-default-button>
 </form>

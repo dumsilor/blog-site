@@ -1,11 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { sample_posts } from '../../blog-post';
+
+import { blogPost } from '../shared/models/blog-post.model';
+import { POST_URL } from '../shared/constants/api.constant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LandingPageService {
+  constructor(private http: HttpClient) {}
+
   getAllBlogPosts() {
-    return sample_posts;
+    return this.http.get<blogPost[]>(POST_URL);
   }
 }
