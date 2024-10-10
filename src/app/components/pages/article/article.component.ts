@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class ArticleComponent implements OnInit, OnDestroy {
   id!: string;
-  articlePost!: blogPost;
+  articlePost?: blogPost;
   articlePostSubscription!: Subscription;
 
   constructor(

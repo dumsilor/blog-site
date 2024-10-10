@@ -3,7 +3,7 @@ import { CardComponent } from '../../partials/card/card.component';
 import { blogPost } from '../../../shared/models/blog-post.model';
 import { CommonModule } from '@angular/common';
 import { DefaultButtonComponent } from '../../partials/default-button/default-button.component';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LandingPageService } from '../../../services/landing-page.service';
 import { Observable, Subscription } from 'rxjs';
 
@@ -21,13 +21,19 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private landingPageService: LandingPageService,
-    private roueter: Router
+    private roueter: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
+
   ngOnInit(): void {
     this.blogObservable = this.landingPageService.getAllBlogPosts();
 
     this.blogSubscription = this.blogObservable.subscribe((posts) => {
       this.blogPosts = posts;
+    });
+
+    this.activatedRoute.params.subscribe((params) => {
+      console.log(params);
     });
   }
 

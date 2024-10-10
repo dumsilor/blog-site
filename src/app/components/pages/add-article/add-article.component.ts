@@ -8,6 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { DefaultButtonComponent } from '../../partials/default-button/default-button.component';
+import { ArticleService } from '../../../services/article.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-article',
@@ -27,14 +29,14 @@ export class AddArticleComponent implements OnInit {
     article: new FormControl('', Validators.required),
   });
 
-  constructor() {}
+  constructor(private articleService: ArticleService, private router: Router) {}
 
   ngOnInit(): void {
     console.log(this.articleForm.controls['title']);
   }
 
   onSubmit() {
-    console.log(this.articleForm.value);
+    this.articleService.addNewArticle(this.articleForm.value);
+    this.router.navigateByUrl('/');
   }
-
 }
