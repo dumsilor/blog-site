@@ -1,0 +1,8 @@
+@mixin shared-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 1.3rem;
+}

@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { blogPost } from '../../../shared/models/blog-post.model';
 import { ArticleService } from '../../../services/article.service';
 import { Subscription } from 'rxjs';
+import { DefaultButtonComponent } from '../../partials/default-button/default-button.component';
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [],
+  imports: [DefaultButtonComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })
@@ -18,7 +19,8 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   constructor(
     private avtivatedRoute: ActivatedRoute,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,5 +40,9 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.articlePostSubscription.unsubscribe();
+  }
+
+  back() {
+    this.router.navigateByUrl('/');
   }
 }

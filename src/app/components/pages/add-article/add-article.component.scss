@@ -1,0 +1,21 @@
+@import "../../../shared/scss/shared-input-container";
+@import "../../../shared/scss/shared-input";
+
+.module-container {
+    @include shared-input-container;
+
+    textarea {
+        @include shared-input;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10rem 30rem;
+}
+
+.container>div {
+    margin: 1rem 0;
+}

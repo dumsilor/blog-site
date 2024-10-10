@@ -1,9 +1,16 @@
 <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
   <!-- <label for="title">Title</label> -->
-  <text-input label="Title" placeholder="title" [control]="this.articleForm.controls['title']" />
-  <div class="article-container">
-    <label for="article">Article</label>
-    <textarea name="article" id="article" formControlName="article" cols="30" rows="10" placeholder="Enter Article"></textarea>
+  <div class="container">
+    <div class="text-input">
+      <text-input label="Title" placeholder="title" [control]="this.articleForm.controls['title']" />
+    </div>
+    <div class="module-container">
+      <label for="article">Article</label>
+      <textarea name="article" id="article" formControlName="article" cols="30" rows="10" placeholder="Enter Article"></textarea>
+    </div>
+    <div class="btn">
+      <app-default-button button_title="submit"></app-default-button>
+    </div>
   </div>
-  <app-default-button button_title="submit"></app-default-button>
+
 </form>

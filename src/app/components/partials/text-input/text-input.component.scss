@@ -1,0 +1,11 @@
+@import "../../../shared/scss/shared-input-container";
+@import "../../../shared/scss/shared-input";
+
+
+.container {
+    @include shared-input-container;
+
+    input {
+        @include shared-input;
+    }
+}
